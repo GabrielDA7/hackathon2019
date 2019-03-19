@@ -1,0 +1,29 @@
+{
+  "name": "hackathon2019g6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "encore dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielDA7/hackathon2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielDA7/hackathon2019/issues"
+  },
+  "homepage": "https://github.com/GabrielDA7/hackathon2019#readme",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.24.0"
+  },
+  "dependencies": {
+    "d3": "^5.9.2",
+    "jquery": "^3.3.1"
+  }
+}

@@ -1,3 +1,4 @@
-require('../css/app.css');
+const $ = require('jquery');
+global.$ = global.jQuery = $;
 
-console.log('Hello Webpack Encore');
+const d3 = require("d3");
