@@ -1,1 +1,2 @@
-require('../../css/landing/index.css');
+require('../../css/landing/index.scss');
+require('./_sidebar');
