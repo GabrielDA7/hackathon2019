@@ -2,16 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <title>{% block title %}Data vizualisation{% endblock %}</title>
+        {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include "module/nav.html.twig" %}
         <div id="root">
             {% block body %}{% endblock %}
         </div>
-        <script src="{{ asset('build/app.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

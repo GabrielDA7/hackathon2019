@@ -1,73 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset("build/landing_index.css") }}">
+    {{ encore_entry_link_tags('landing_index') }}
 {% endblock %}
 
 {% block title %}Data Vizualisation{% endblock %}
 
 {% block body %}
-    <section id="tool-description">
-        <div class="row justify-content-center">
-            <h1>NOUVEAU TOOLS POUR STORYTELLERS</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique sem enim, in tristique
-                lacus condimentum et.
-                Pellentesque nisi lorem
-            </p>
-        </div>
-    </section>
+    <div id="data-viz">
 
-    <section id="trending" class="content">
-        <section id="trending-news" class="row wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Bootstrap Sidebar</h3>
-                </div>
-
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Page Content -->
-            <div id="content">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
-                </button>
-
-            </div>
-        </section>
-    </section>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('build/landing_index.js') }}"></script>
+    {{ encore_entry_script_tags('landing_index') }}
 {% endblock %}
