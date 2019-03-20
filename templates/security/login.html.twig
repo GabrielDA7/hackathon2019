@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">
+                <span>{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="input-field col s12 m12 l12 xl12">
+                {{ form_label(form._login_username) }}
+                {{ form_errors(form._login_username) }}
+                {{ form_widget(form._login_username) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m12 l12 xl12">
+                {{ form_label(form._login_password) }}
+                {{ form_errors(form._login_password) }}
+                {{ form_widget(form._login_password) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m12 l12 xl12">
+                {{ form_widget(form.login) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s6 m6 l6 xl6">
+                Not yet registered ? <a href="{{ path('app_security_register') }}">Register</a>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

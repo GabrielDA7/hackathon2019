@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class LandingController
  * @package App\Controller
- * @Route(name="app_", path="/")
+ * @Route(name="app_home_", path="/")
  */
 class LandingController extends AbstractController
 {
     /**
-     * @Route(name="home")
+     * @Route(name="index")
      */
     public function index()
     {
