@@ -1,4 +1,16 @@
 @import "../_variables";
+@import "../modules/input_range";
+@import "../modules/sidebar";
+
+body {
+  background: #232840;
+}
+
+#content {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
 
 .center-image {
   transform: translate(-30px,-30px);

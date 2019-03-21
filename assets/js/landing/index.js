@@ -1,6 +1,10 @@
 require('../../css/landing/index.scss');
 require('../../css/d3/circularBarPlot.scss');
 require('./_sidebar');
+require('../modules/search');
+require('../modules/range-score');
+require('../modules/range-articles');
+require('../modules/sidebar');
 import CircularBarPlot from "../d3/circularBarPlot";
 import * as d3 from "d3";
 

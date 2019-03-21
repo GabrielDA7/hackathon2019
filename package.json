@@ -34,6 +34,10 @@
   "dependencies": {
     "d3": "^5.9.2",
     "install": "^0.12.2",
-    "mathjs": "^5.7.0"
+    "mathjs": "^5.7.0",
+    "bourbon": "^5.1.0",
+    "compass": "^0.1.1",
+    "compass-sass-mixins": "^0.12.7",
+    "jquery-ui-bundle": "^1.12.1-migrate"
   }
 }

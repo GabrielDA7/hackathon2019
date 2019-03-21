@@ -1,0 +1,101 @@
+<div class="demo">
+    <svg class="sidebar" viewBox="0 0 300 500">
+        <path class="s-path" stroke="black" fill="#232840" d="M0,0 50,0 a0,250 0 1,1 0,500 L0,500"></path>
+    </svg>
+    <div class="static">
+    </div>
+    <div class="sidebar-content">
+        <div class="container">
+            <span><b>COUNTRY</b></span>
+            <select id="edition" class="form-control">
+                <option value="fr-fr">France</option>
+                <option value="en-gb">UK</option>
+                <option value="de-de">German</option>
+            </select>
+        </div>
+        <br/>
+
+        <div class="container">
+            <span><b>OCCURRENCES</b></span>
+            <input type="text" id="limit" readonly style="background:transparent; border:0;">
+            <div id="range-articles"></div>
+        </div>
+        <br/>
+
+        <div class="container">
+            <span><b>POPULARITY</b></span>
+            <input type="text" id="score" readonly style="background:transparent; border:0;">
+            <div id="range-score"></div>
+        </div>
+        <br/>
+
+        <div class="container">
+            <span><b>TRENDING SINCE</b></span>
+            <form id="hours">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="radio" id="one-hour" name="hours" value="1" checked>
+                        <label for="today">1 hours</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="radio" id="three-hours" name="hours" value="3">
+                        <label for="one-day">3 hours</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="radio" id="six-hours" name="hours" value="6">
+                        <label for="one-week">6 hours</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="radio" id="nine-hours" name="hours" value="9">
+                        <label for="one-week">9 hours</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="radio" id="twelve-hours" name="hours" value="12">
+                        <label for="one-week">12 hours</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="radio" id="twenty-four-hours" name="hours" value="24">
+                        <label for="one-week">24 hours</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br/>
+
+        <div class="container">
+            <span><b>CATEGORIES</b></span>
+            <form id="topic">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="checkbox" id="economy" name="topic" value="b">
+                        <label for="economy">Economy</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" id="sports" name="topic" value="s">
+                        <label for="sports">Sports</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" id="international" name="topic" value="w">
+                        <label for="international">International</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="checkbox" id="tech" name="topic" value="t">
+                        <label for="tech">Science/Tech</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" id="health" name="topic" value="m">
+                        <label for="health">Health</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" id="national" name="topic" value="n">
+                        <label for="national">National</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

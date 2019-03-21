@@ -42,10 +42,10 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
-    .addPlugin(new CopyWebpackPlugin([
-        // copies to {output}/static
-        { from: './assets/static', to: 'static' }
-    ]))
+    // .addPlugin(new CopyWebpackPlugin([
+    //     // copies to {output}/static
+    //     { from: './assets/static', to: 'static' }
+    // ]))
 ;
 
 module.exports = Encore.getWebpackConfig();
