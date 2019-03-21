@@ -1,7 +1,7 @@
 @import "../variables";
 
 #navigation {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: -100%;
@@ -13,3 +13,34 @@
   color: white;
   z-index: 1;
 }
+
+#nav-open-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: $primary-background-color;
+  width: 86px;
+  height: 100%;
+  -webkit-box-shadow: 4px 0 3px -2px black;
+  box-shadow: 4px 0 3px -2px black;
+  z-index: 1;
+
+  &:after {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    left: 7rem;
+    width: 2rem;
+    height: 2rem;
+    margin-left: -120px;
+    margin-top: -1rem;
+    border: 2px solid #ffffff;
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+    animation: arrows 1.5s infinite;
+    top: 50%;
+  }
+}
+
+
