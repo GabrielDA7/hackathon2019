@@ -33,18 +33,22 @@ function sendAjaxRequest(topic) {
         type: 'GET',
         data: queryString,
         success:function (data) {
-            var margin = 10,
-                width = 400,
-                height = 400,
-                innerRadius = 80,
-                outerRadius = Math.min(width, height) / 2;
-            let formatedData = formatData(data);
-            $("#data-viz").children().remove();
-            const graph = new CircularBarPlot(margin, width, height, innerRadius, outerRadius);
-            graph.setData(formatedData);
-            graph.init("#data-viz");
+            createGraph(data);
         }
     });
+}
+
+function createGraph(data) {
+    let margin = 10,
+        width = 400,
+        height = 400,
+        innerRadius = 80,
+        outerRadius = Math.min(width, height) / 2;
+    let formatedData = formatData(data);
+    $("#data-viz").children().remove();
+    const graph = new CircularBarPlot(margin, width, height, innerRadius, outerRadius);
+    graph.setData(formatedData);
+    graph.init("#data-viz");
 }
 
 function formatData(data) {

@@ -6,7 +6,7 @@
  * Time: 15:20
  */
 
-namespace App;
+namespace App\Services;
 
 
 use Curl\Curl;
@@ -17,8 +17,9 @@ class CurlService
     private const API_URL = "https://api.ozae.com";
 
     public const ARTICLES_URI = "/gnw/articles";
+    public const ARTICLE_URL = "/gnw/article/?/content_html";
 
-    public function initCurl(string $url, array $data) : Curl
+    public function initCurl(string $url, array $data): Curl
     {
         try {
             $curl = new Curl();

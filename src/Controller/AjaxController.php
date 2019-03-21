@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\CurlService;
+use App\Services\CurlService;
 use Curl\Curl;
 use DateInterval;
 use DateTime;
@@ -30,8 +30,6 @@ class AjaxController extends AbstractController
     private $serializer;
     private $curlService;
 
-    private const API_KEY = "c779dead472749eeb0316fd75e2c3f06";
-    private const API_URL = "https://api.ozae.com";
     private const DEFAULT_EDITION = "fr-fr";
 
     public function __construct(SerializerInterface $serializer, CurlService $curlService)
@@ -41,12 +39,12 @@ class AjaxController extends AbstractController
     }
 
     /**
-     * @Route(name="find_by_words", path="/find/articles/")
+     * @Route(name="find_articles", path="/find/articles/")
      * @param Request $request
      * @return JsonResponse
      * @throws \Exception
      */
-    public function findArticles(Request $request) : JsonResponse
+    public function findArticles(Request $request): JsonResponse
     {
         $data = $this->extractRequestParam($request);
         $topics = $this->explodeTopics($request);
@@ -59,16 +57,31 @@ class AjaxController extends AbstractController
             $curl = $this->curlService->initCurl($this->curlService::ARTICLES_URI, $data);
             if ($curl == null)
                 continue;
-
-            $response = json_decode($curl->getResponse(), true);
-            $articles = $response["articles"];
-
-            $articles = array_slice($articles, 0, $articlesByTopic);
+            $articles = array_merge($articles, $this->extractArticlesFromApiResponse($curl, $articlesByTopic));
         }
         return new JsonResponse($articles);
     }
 
-    private function extractRequestParam(Request $request) : array
+    /**
+     * @Route(name="find_article", path="/find/article/{id}")
+     * @param int $id
+     * @return Response
+     */
+    public function findArticle(int $id): Response
+    {
+        $uri = str_replace("?", $id, $this->curlService::ARTICLE_URL);
+        $curl = $this->curlService->initCurl($uri, []);
+        return new Response($curl->getResponse());
+    }
+
+    private function extractArticlesFromApiResponse(Curl $curl, int $articlesByTopic): array
+    {
+        $response = json_decode($curl->getResponse(), true);
+        $articles = $response["articles"];
+        return array_slice($articles, 0, $articlesByTopic);
+    }
+
+    private function extractRequestParam(Request $request): array
     {
         return [
             'query' => $request->get("query"),
@@ -79,28 +92,7 @@ class AjaxController extends AbstractController
         ];
     }
 
-    /**
-     * @param Request $request
-     * @return Response
-     * @throws \ErrorException
-     * @Route(path="/test")
-     */
-    public function test(Request $request)
-    {
-        $curl = new Curl();
-        $curl->setHeader('Content-Type', 'application/json');
-        $curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
-        $curl->get(self::API_URL . '/gnw/articles', array(
-            'query' => $request->get("query"),
-            'key' => self::API_KEY,
-            'date' => "20180701__20180702",
-            'edition' => "fr-fr",
-            'hard_limit' => 10
-        ));
-        return new Response($curl->getResponse());
-    }
-
-    private function formatDate(string $daysToSubtract) : string
+    private function formatDate(string $daysToSubtract): string
     {
         if ($daysToSubtract == null)
             return null;
@@ -120,13 +112,13 @@ class AjaxController extends AbstractController
         return $startDate . "__" . $todayDate;
     }
 
-    private function explodeTopics(Request $request) : array
+    private function explodeTopics(Request $request): array
     {
         $topics = $request->get("topics") ?? "all";
         return explode("-", $topics);
     }
 
-    private function computeArticlesByTopic(Request $request, array $topics) : int
+    private function computeArticlesByTopic(Request $request, array $topics): int
     {
         $limit = $request->get("limit") ?? 100;
         $articlesByTopic = $limit / count($topics);
