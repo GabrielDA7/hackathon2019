@@ -6,7 +6,7 @@ $(document).ready( function () {
     $('.trending-topic').click(function () {
         let topic = $('.trending-topic').find("span").attr("id");
         sendAjaxRequest(topic);
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({ scrollTop: $('#trending-news').position().top }, "slow");
     });
 
     $('#search, #topic, #hours').change(function () {
