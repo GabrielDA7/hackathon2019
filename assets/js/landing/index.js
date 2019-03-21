@@ -6,7 +6,8 @@ require('../modules/range-articles');
 require('../modules/sidebar');
 require('../modules/search');
 import CircularBarPlot from "../d3/circularBarPlot";
-import * as d3 from "d3";
+
+
 
 
 
@@ -16,6 +17,10 @@ $(document).ready(function(){
     $('.bar-path-selection').on("click", function(e){
         $('.active').removeClass('active');
         $(this).addClass('active');
+    });
+
+    $('#circle1').on("click", function(e){
+        alert('oui');
     });
 });
 

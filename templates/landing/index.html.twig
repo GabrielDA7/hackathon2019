@@ -4,9 +4,10 @@
     {{ encore_entry_link_tags('landing_index') }}
 {% endblock %}
 
-{% block title %}Data Vizualisation{% endblock %}
+{% block title %}In'Pulse{% endblock %}
 
 {% block body %}
+<<<<<<< Updated upstream
     {% include "landing/sidebar.html.twig" %}
 
     <div class="container">
@@ -37,6 +38,11 @@
         </div>
     </div>
 
+=======
+    {% include "module/navbar.html.twig" %}
+    {% include "landing/description.html.twig" %}
+    {% include "landing/trending_news.html.twig" %}
+>>>>>>> Stashed changes
 {% endblock %}
 
 {% block javascripts %}

@@ -1,14 +1,10 @@
 import * as d3 from "d3";
-import {radial} from "./lib/radial";
 
-
-class CircularBarPlot {
+class Histogram {
     constructor(margin, width, height, innerRadius, outerRadius) {
         this.margin = margin;
         this.width = width;
         this.height = height;
-        this.innerRadius = innerRadius;
-        this.outerRadius = outerRadius;
     }
 
     init(root) {
@@ -16,22 +12,6 @@ class CircularBarPlot {
         this.createRadiant(svgContainer);
         let barContainer = this.createBarContainer(svgContainer);
         this.createBars(barContainer);
-        let circlesContainer = this.createCirclesContainer(barContainer);
-        this.createCicle(circlesContainer);
-        this.createImgCircle(circlesContainer);
-    }
-
-    xScale() {
-        return d3.scaleBand()
-            .range([0, 2 * Math.PI])
-            .domain(this.data.map(function (d) {
-                return d.name
-            }));
-    }
-
-    yScale() {
-        return radial().range([this.innerRadius, this.outerRadius])
-            .domain([0, 100]);
     }
 
     createSVGContainer(root) {
@@ -50,7 +30,7 @@ class CircularBarPlot {
     }
 
     createBars(containerBar) {
-        let self = this;
+        var widthBar = this.width/this.data.length;
         containerBar.selectAll("path")
             .data(this.data)
             .enter()
@@ -59,19 +39,19 @@ class CircularBarPlot {
             .attr("cursor", "pointer")
             .append("g")
             .attr("class", "bar-path-selection-background")
-            .append("path")
-            .attr("class", "bar")
-            .attr("d", d3.arc()
-                .innerRadius(this.innerRadius)
-                .outerRadius(function(d) { return self.yScale()(d['value']); })
-                .startAngle(function(d) { return self.xScale()(d.name); })
-                .endAngle(function(d) { return self.xScale()(d.name) + self.xScale().bandwidth(); })
-                .padAngle(0.03)
-                .padRadius(this.innerRadius));
+            .append("rect")
+            .attr("width", widthBar)
+            .attr("height", function (d) {
+                return d.value;
+            })
+            .attr("x", function(d,i) {
+                return i * widthBar;
+            }).attr("y", 0)
+        ;
     }
 
     createCirclesContainer(barContainer) {
-       return barContainer.append("g");
+        return barContainer.append("g");
     }
 
     createCicle(circlesContainer) {
@@ -123,7 +103,7 @@ class CircularBarPlot {
 }
 
 
-export default CircularBarPlot;
+export default Histogram;
 
 
 

@@ -1,18 +1,14 @@
 @import "../_variables";
 @import "../modules/input_range";
 @import "../modules/sidebar";
+<<<<<<< Updated upstream
 @import "../modules/trending_topics";
+=======
+@import "../modules/landing/description.scss";
+@import "../modules/landing/trending_news.scss";
+>>>>>>> Stashed changes
 
 body {
   background: #232840;
 }
 
-#content {
-  margin-left: 100px;
-  margin-top: 50px;
-}
-
-
-.center-image {
-  transform: translate(-30px,-30px);
-}
