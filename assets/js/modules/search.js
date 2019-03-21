@@ -56,7 +56,7 @@ function formatData(data) {
     data.forEach(function (element) {
         let value = element.article_score * 100 / data[0].article_score;
         formatedData.push({
-            name: element.name,
+            name: element.id,
             value: value
         });
     });

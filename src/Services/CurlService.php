@@ -17,7 +17,7 @@ class CurlService
     private const API_URL = "https://api.ozae.com";
 
     public const ARTICLES_URI = "/gnw/articles";
-    public const ARTICLE_URL = "/gnw/article/?/content_html";
+    public const ARTICLE_URL = "/gnw/article/?";
 
     public function initCurl(string $url, array $data): Curl
     {

@@ -5,6 +5,7 @@ require('../modules/range-score');
 require('../modules/range-articles');
 require('../modules/sidebar');
 require('../modules/search');
+require('../modules/bar');
 
 // EVENTS
 $(document).ready(function(){

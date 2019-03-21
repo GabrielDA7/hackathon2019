@@ -67,7 +67,10 @@ class CircularBarPlot {
                 .startAngle(function(d) { return self.xScale()(d.name); })
                 .endAngle(function(d) { return self.xScale()(d.name) + self.xScale().bandwidth(); })
                 .padAngle(0.03)
-                .padRadius(this.innerRadius));
+                .padRadius(this.innerRadius))
+            .attr("id", function (d) {
+                return d.name;
+            });
     }
 
     createCirclesContainer(barContainer) {

@@ -71,7 +71,8 @@ class AjaxController extends AbstractController
     {
         $uri = str_replace("?", $id, $this->curlService::ARTICLE_URL);
         $curl = $this->curlService->initCurl($uri, []);
-        return new Response($curl->getResponse());
+        $response = json_decode($curl->getResponse(), true);
+        return new JsonResponse($response);
     }
 
     private function extractArticlesFromApiResponse(Curl $curl, int $articlesByTopic): array
