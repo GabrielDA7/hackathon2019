@@ -1,0 +1,46 @@
+.bar-path-selection, .bar-path-selection *
+{
+  transition: all 0.25s ease-out;
+}
+
+.bar-path-selection {
+  transform-origin: 50% 50%;
+}
+
+.bar-path-selection:hover, .bar-path-selection.active {
+  transform: scale(1.005);
+}
+
+.bar-path-selection:hover .bar-path-selection-background *, .bar-path-selection.active, .bar-path-selection.active *
+{
+  fill: #14b1bb;
+}
+
+#data-viz {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: top;
+  overflow: hidden;
+}
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spin-active {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+.center-image {
+  transform: translate(-30px,-30px);
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

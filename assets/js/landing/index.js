@@ -1,34 +1,62 @@
 require('../../css/landing/index.scss');
+require('../../css/d3/circularBarPlot.scss');
 require('./_sidebar');
+import CircularBarPlot from "../d3/circularBarPlot";
+import * as d3 from "d3";
 
-const d3 = require("d3");
+// Graph constantes
+var margin = 10,
+    width = 400,
+    height = 400,
+    innerRadius = 80,
+    outerRadius = Math.min(width, height) / 2;
+
+var myData = [
+    {name : 'Mon', value: 100},
+    {name : 'Tuessssssssssss', value: 100},
+    {name : 'Wed', value: 100},
+    {name : 'Thu', value: 100},
+    {name : 'Fris', value: 100},
+    {name : 'Mond', value: 100},
+    {name : 'Tuedd', value: 50},
+    {name : 'Wedf', value: 100},
+    {name : 'Thug', value: 100},
+    {name : 'Frih', value: 100},
+    {name : 'Mona', value: 100},
+    {name : 'Tuee', value: 40},
+    {name : 'Wedr', value: 100},
+    {name : 'Thut', value: 100},
+    {name : 'Frisa', value: 30},
+    {name : 'Monda', value: 100},
+    {name : 'Tuedda', value: 100},
+    {name : 'Mondsa', value: 100},
+    {name : 'Tuedsda', value: 100},
+    {name : 'Wedfsa', value: 100},
+    {name : 'Thugsa', value: 100},
+    {name : 'Tuedsda', value: 100},
+    {name : 'Mondsa', value: 100},
+    {name : 'Tuedssda', value: 100},
+    {name : 'Wesdfsa', value: 100},
+    {name : 'Tshugsa', value: 100},
 
 
-chart = {
-    const svg = d3.select(DOM.svg(width, height))
-        .attr("viewBox", `${-width / 2} ${-height * 0.69} ${width} ${height}`)
-        .style("width", "100%")
-        .style("height", "auto")
-        .style("font", "10px sans-serif");
 
-    svg.append("g")
-        .selectAll("g")
-        .data(d3.stack().keys(data.columns.slice(1))(data))
-        .join("g")
-        .attr("fill", d => z(d.key))
-        .selectAll("path")
-        .data(d => d)
-        .join("path")
-        .attr("d", arc);
+];
 
-    svg.append("g")
-        .call(xAxis);
+const graph = new CircularBarPlot(margin, width, height, innerRadius, outerRadius);
+graph.setData(myData);
+graph.init("#data-viz");
+;
 
-    svg.append("g")
-        .call(yAxis);
 
-    svg.append("g")
-        .call(legend);
 
-    return svg.node();
-}
+// EVENTS
+$(document).ready(function(){
+    $('.bar-path-selection').on("click", function(e){
+        $('.active').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+
+
+

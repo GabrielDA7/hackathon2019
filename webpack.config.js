@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
 // directory where compiled assets will be stored
@@ -19,6 +20,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('landing_index', './assets/js/landing/index.js')
+    .addEntry('logo', './assets/img/logo.png')
 
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -31,6 +33,7 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
+
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()
 
@@ -39,6 +42,10 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
+    .addPlugin(new CopyWebpackPlugin([
+        // copies to {output}/static
+        { from: './assets/static', to: 'static' }
+    ]))
 ;
 
 module.exports = Encore.getWebpackConfig();
