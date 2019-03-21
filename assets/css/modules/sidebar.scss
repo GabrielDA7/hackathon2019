@@ -1,12 +1,12 @@
 @import "../variables";
 
 #navigation {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: -100%;
   background-color: $primary-background-color;
-  width: 30%;
+  width: 535px;
   height: 100%;
   -webkit-box-shadow: 4px 0 3px -2px black;
   box-shadow: 4px 0 3px -2px black;
