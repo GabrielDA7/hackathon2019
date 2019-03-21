@@ -1,4 +1,14 @@
+import CircularBarPlot from "../d3/circularBarPlot";
+
 $(document).ready( function () {
+    sendAjaxRequest();
+
+    $('.trending-topic').click(function () {
+        let topic = $('.trending-topic').find("span").attr("id");
+        sendAjaxRequest(topic);
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    });
+
     $('#search, #topic, #hours').change(function () {
         sendAjaxRequest();
     });
@@ -8,21 +18,64 @@ $(document).ready( function () {
     });
 });
 
-function sendAjaxRequest() {
+function sendAjaxRequest(topic) {
     let query = $('#search').val();
     let topics = getCheckedRadioValues('topic');
     let hours = getCheckedRadioValue('hours');
     let limit = getNumberFromString($('#limit').val());
-    let score = getSliderValues();
+
+    if (topic != null)
+        topics = [topic];
+    // let score = getSliderValues();
     let queryString = formatQueryString(query, topics, hours, limit, score);
     $.ajax({
         url:"/ajax/find/articles/",
         type: 'GET',
         data: queryString,
         success:function (data) {
-            console.log(data[0]);
+            var margin = 10,
+                width = 400,
+                height = 400,
+                innerRadius = 80,
+                outerRadius = Math.min(width, height) / 2;
+            let formatedData = formatData(data);
+            $("#data-viz").children().remove();
+            const graph = new CircularBarPlot(margin, width, height, innerRadius, outerRadius);
+            graph.setData(formatedData);
+            graph.init("#data-viz");
         }
     });
+}
+
+function formatData(data) {
+    let formatedData = [];
+    data.forEach(function (element) {
+        let value = element.article_score * 100 / data[0].article_score;
+        formatedData.push({
+            name: element.name,
+            value: value
+        });
+    });
+    return shuffle(formatedData);
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 
 function getSliderValues() {
@@ -69,9 +122,9 @@ function formatQueryString(query, topics, hours, limit, score) {
     if (isNotEmpty(topics)) {
         queryString += "topics=" + splitArrayElements(topics) + "&";
     }
-    if (isNotEmpty(score)) {
-        queryString += "score=" + splitArrayElements(score) + "&";
-    }
+    // if (isNotEmpty(score)) {
+    //     queryString += "score=" + splitArrayElements(score) + "&";
+    // }
     return queryString;
 }
 
@@ -85,6 +138,8 @@ function splitArrayElements(array) {
 }
 
 function isNotEmpty(value) {
+    if (Array.isArray(value) && value.length === 0)
+        return false;
     return !(value === undefined || value === null || value === "");
 }
 

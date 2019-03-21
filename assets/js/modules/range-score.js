@@ -1,5 +1,7 @@
 $(document).ready( function () {
     let update_handle_track_pos = function(slider, ui_handle_pos) {
+        if (ui_handle_pos == null || ui_handle_pos[1] == null)
+            return null;
         var handle_track_xoffset, slider_range_inverse_width;
         handle_track_xoffset = -((ui_handle_pos[1] / 100) * slider.clientWidth);
         $(slider).find(".handle-track").css("left", handle_track_xoffset);

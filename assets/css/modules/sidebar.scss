@@ -5,11 +5,15 @@ $openSans: 'Open Sans', Helvetica, Arial, sans-serif;
 $transTime: 200ms;
 
 .demo {
-  position: absolute;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 535px;
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+  z-index: 1;
 }
 .static {
   height: 100%;
@@ -36,7 +40,7 @@ $transTime: 200ms;
   }
 }
 .sidebar-content {
-  z-index: -1;
+  z-index: 1;
   position: absolute;
   top: 0;
   left: 0;
