@@ -1,4 +1,4 @@
-<div id="trending-new">
+<div id="trending-news">
     <div class="sidebar-container">
         {% include "landing/sidebar.html.twig" %}
     </div>
@@ -7,10 +7,13 @@
             <h2></h2>
         </div>
         <div class="row">
-            <div class="col-md-4 offset-4">
-                <div id="data-viz"></div>
+            <div class="col-md-8">
+                <div id="container-viz">
+                    <div id="data-viz"></div>
+                </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
+                {% include "landing/trending_news_right.html.twig" %}
             </div>
         </div>
     </div>
