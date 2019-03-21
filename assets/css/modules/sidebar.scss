@@ -1,50 +1,6 @@
 @import "../variables";
 
-<<<<<<< Updated upstream
-
-$openSans: 'Open Sans', Helvetica, Arial, sans-serif;
-$transTime: 200ms;
-
-.demo {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 535px;
-  height: 100%;
-  color: #ffffff;
-  font-size: 14px;
-  z-index: 1;
-}
-.static {
-  height: 100%;
-  font-size: 1.8rem;
-  font-family: $openSans;
-
-  &:after {
-    z-index: 1;
-    content: "";
-    position: absolute;
-    left: 7rem;
-    width: 2rem;
-    height: 2rem;
-    margin-left: -120px;
-    margin-top: -1rem;
-    border: 2px solid #ffffff;
-    border-left: none;
-    border-bottom: none;
-    transform: rotate(45deg);
-    animation: arrows 1.5s infinite;
-  }
-  &:after {
-    top: 50%;
-  }
-}
-.sidebar-content {
-  z-index: 1;
-=======
 #navigation {
->>>>>>> Stashed changes
   position: absolute;
   top: 0;
   bottom: 0;

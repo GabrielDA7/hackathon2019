@@ -7,42 +7,10 @@
 {% block title %}In'Pulse{% endblock %}
 
 {% block body %}
-<<<<<<< Updated upstream
-    {% include "landing/sidebar.html.twig" %}
-
-    <div class="container">
-        <div id="content">
-            <div class="row">
-                <div class="col-md-4 offset-8">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="form-control-feedback fas fa-search"></i>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control" id="search" placeholder="Search a keyword">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="offset-md-2 col-md-6 col-sm-12">
-                    <div id="data-viz">
-                    </div>
-                </div>
-                <div class="col 4">
-                </div>
-            </div>
-            <hr>
-            {% include "landing/trending_topics.html.twig" %}
-        </div>
-    </div>
-
-=======
     {% include "module/navbar.html.twig" %}
     {% include "landing/description.html.twig" %}
     {% include "landing/trending_news.html.twig" %}
->>>>>>> Stashed changes
+    {% include "landing/trending_topics.html.twig" %}
 {% endblock %}
 
 {% block javascripts %}
