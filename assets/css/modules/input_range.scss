@@ -14,6 +14,13 @@ $slider-handle--dot--size: $slider-handle--size - 10px;
 #range-score {
   width: 100%;
 }
+
+.range-value {
+  background:transparent;
+  border:0;
+  color: white;
+}
+
 #range-articles {
   width: 100%;
 }
