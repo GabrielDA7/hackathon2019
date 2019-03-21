@@ -15,5 +15,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        var logoPath = "{{ asset('build/images/logo.png') }}";
+    </script>
     {{ encore_entry_script_tags('landing_index') }}
 {% endblock %}

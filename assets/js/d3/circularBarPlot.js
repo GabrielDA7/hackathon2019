@@ -84,7 +84,7 @@ class CircularBarPlot {
 
     createImgCircle(circlesContainer) {
         circlesContainer.append("svg:image")
-            .attr("xlink:href", "/assets/img/logo.png")
+            .attr("xlink:href", logoPath)
             .attr("width", "60px")
             .attr("height", "60px")
             .attr("class", "center-image");

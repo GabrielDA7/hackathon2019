@@ -6,7 +6,6 @@ require('../modules/range-articles');
 require('../modules/sidebar');
 require('../modules/search');
 
-
 // EVENTS
 $(document).ready(function(){
     $('.bar-path-selection').on("click", function(e){
