@@ -153,8 +153,9 @@ function getNumberFromString(string) {
 }
 
 function createLinkList(data) {
-    var tbody = $("#container-right table tbody");
-   data.forEach(function(element) {
+    let tbody = $("#container-right table tbody");
+    tbody.children().remove();
+    data.forEach(function(element) {
     tbody.append(
     "<tr id='row"+element.id+"'>" +
     "<td class='col-xs-3'>" +
