@@ -8,7 +8,10 @@ function sendAjaxRequest(id) {
         url:"/ajax/find/article/" + id,
         type: 'GET',
         success:function (data) {
-            console.log(data);
+            $(".selectedRow").removeClass("selectedRow");
+            document.getElementById("row" + data.id).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            let elem = $("#row" + data.id);
+            elem.addClass("selectedRow");
             data.ngrams.forEach(function (element) {
                 console.log(element);
             });

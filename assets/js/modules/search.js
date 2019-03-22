@@ -34,6 +34,7 @@ function sendAjaxRequest(topic) {
         data: queryString,
         success:function (data) {
             createGraph(data);
+            createLinkList(data);
         }
     });
 }
@@ -149,4 +150,23 @@ function isNotEmpty(value) {
 
 function getNumberFromString(string) {
     return parseInt(string.match(/\d+/));
+}
+
+function createLinkList(data) {
+    var tbody = $("#container-right table tbody");
+   data.forEach(function(element) {
+    tbody.append(
+    "<tr id='row"+element.id+"'>" +
+    "<td class='col-xs-3'>" +
+           "<div class='form-check'>" +
+           "<input class='form-check-input' type='checkbox' checked>" +
+           "<label class='form-check-label'>" +
+           "<a class='truncate' href='" + element.url + "'>" + element.name + "</a>" +
+           "</label>"+
+           "</div>"+
+           "</td>"+
+           "</tr>"
+    )
+   });
+   $("#checkAll").prop("checked", true);
 }

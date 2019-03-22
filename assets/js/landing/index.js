@@ -14,6 +14,14 @@ $(document).ready(function(){
         $(this).addClass('active');
     });
 
+    $('#checkAll').on("change", function(e) {
+        if($(this).prop("checked") == true) {
+            $("#container-right input[type='checkbox']").prop("checked", true)
+        } else {
+            $("#container-right input[type='checkbox']").prop("checked", false)
+        }
+    });
+
     $('#circle1').on("click", function(e){
         alert('oui');
     });

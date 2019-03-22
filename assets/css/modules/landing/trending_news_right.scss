@@ -1,0 +1,57 @@
+.table-fixed{
+  border-radius: 10px;
+  width: 100%;
+  background-color: white;
+  .form-check {
+    line-height: 24px;
+  }
+  tbody{
+    max-height:200px;
+    overflow-y:auto;
+    width: 100%;
+  }
+  tbody,tr,td,th{
+    border-top: none;
+    display:block;
+  }
+}
+
+#container-right {
+  height: 300px;
+  padding-top: 20px;
+  color: white;
+  table {
+    margin-top: 10px;
+  }
+}
+
+
+.truncate {
+  text-decoration: none;
+  color: black;
+  display: block;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate:hover {
+  text-decoration: none;
+}
+
+
+.last-tr {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+tfoot {
+  border-top: 1px grey solid !important;
+}
+
+.selectedRow {
+  background: linear-gradient(0.25turn, #FFFFFF, #2F80ED, #BB6BD9);
+}
